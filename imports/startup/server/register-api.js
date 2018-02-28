@@ -1,21 +1,33 @@
-import { createApolloServer } from "meteor/apollo";
-import { makeExecutableSchema } from "graphql-tools";
+import { createApolloServer } from 'meteor/apollo';
+import { makeExecutableSchema } from 'graphql-tools';
 
-import ResolutionsSchema from "../../api/resolutions/resolutions.graphql";
+import ResolutionsSchema from '../../api/resolutions/Resolutions.graphql';
 
 const testSchema = `
 type Query {
   hi: String
+  resolutions: [Resolution] 
 }
 `;
 
 const typeDefs = [testSchema, ResolutionsSchema];
 
-// Query
 const resolvers = {
   Query: {
     hi() {
-      return "Hello World";
+      return 'Hello world!';
+    },
+    resolutions() {
+      return [
+        {
+          _id: 'asasdf',
+          name: 'Name'
+        },
+        {
+          _id: 'fff',
+          name: 'Names'
+        }
+      ];
     }
   }
 };
@@ -25,6 +37,4 @@ const schema = makeExecutableSchema({
   resolvers
 });
 
-createApolloServer({
-  schema
-});
+createApolloServer({ schema });
