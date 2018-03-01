@@ -1,3 +1,4 @@
+# Does not define the database, not a mirror, only public
 type Resolution {
   _id: String! # comes from mongo, ! = required
   name: String!

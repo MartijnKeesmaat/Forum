@@ -1,16 +1,13 @@
+import Resolutions from './resolutions';
+
+// Resolutions.insert({
+//   name: 'Test Res'
+// });
+
 export default {
   Query: {
     resolutions() {
-      return [
-        {
-          _id: 'asasdf',
-          name: 'Name'
-        },
-        {
-          _id: 'fff',
-          name: 'Names'
-        }
-      ];
+      return Resolutions.find({}).fetch(); // Find: returns cursor, fetch: get array of res from collection
     }
   }
 };
